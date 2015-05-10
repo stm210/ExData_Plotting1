@@ -21,7 +21,6 @@ hpc_data_dates$Sub_metering_1 <- as.numeric(as.character(hpc_data_dates$Sub_mete
 hpc_data_dates$Sub_metering_2 <- as.numeric(as.character(hpc_data_dates$Sub_metering_2))
 hpc_data_dates$Sub_metering_3 <- as.numeric(as.character(hpc_data_dates$Sub_metering_3))
 
-
 png("plot4.png", width= 480, height = 480, units = "px")
 
 par(mfrow=c(2,2))
