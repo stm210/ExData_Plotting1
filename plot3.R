@@ -12,11 +12,11 @@ hpc_data$date_time <- as.POSIXct(paste(hpc_data$record_date, hpc_data$record_tim
 hpc_data_dates <- subset(hpc_data, record_date >= '2007-02-01' & record_date <= '2007-02-02')
 
 ##fix vars
-png("plot3.png", width= 480, height = 480, units = "px")
 hpc_data_dates$Sub_metering_1 <- as.numeric(as.character(hpc_data_dates$Sub_metering_1))
 hpc_data_dates$Sub_metering_2 <- as.numeric(as.character(hpc_data_dates$Sub_metering_2))
 hpc_data_dates$Sub_metering_3 <- as.numeric(as.character(hpc_data_dates$Sub_metering_3))
 
+png("plot3.png", width= 480, height = 480, units = "px")
 with(hpc_data_dates,  plot(date_time,Sub_metering_1, type = "l", ylab = "Energy sub metering", xlab = ""))
 lines(hpc_data_dates$date_time,hpc_data_dates$Sub_metering_2, type = "l", col="red")
 lines(hpc_data_dates$date_time,hpc_data_dates$Sub_metering_3, type = "l", col = "blue")

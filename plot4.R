@@ -27,9 +27,8 @@ png("plot4.png", width= 480, height = 480, units = "px")
 par(mfrow=c(2,2))
 
 ##1
-hist(hpc_data_dates$Global_active_power, freq = TRUE,
-     col = "red", border = "black", main = "Global Active Power",
-     xlab = "Global Active Power (kilowatts)" ,  ylab = "Frequency")
+with(hpc_data_dates, plot(date_time,Global_active_power, type = "l",
+                          ylab = "Global Active Power", xlab = ""))
 
 ##2
 with(hpc_data_dates, plot(date_time,Voltage, type = "l",
