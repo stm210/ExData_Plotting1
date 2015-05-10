@@ -1,0 +1,30 @@
+## Plot 1
+## Histogram of Global Active Power
+
+hpc_data <- read.table("household_power_consumption.txt", header= TRUE, sep=";", nrows = 2075259, )
+
+names(hpc_data)[1] <- "record_date"
+names(hpc_data)[2] <- "record_time"
+
+hpc_data$record_date <- as.Date(as.character(hpc_data$record_date), '%d/%m/%Y')
+
+hpc_data_dates <- subset(hpc_data, record_date >= '2007-02-01' & record_date <= '2007-02-02')
+
+##check this- setting to 5/8
+hpc_data_dates$record_time <- strptime(hpc_data_dates$record_time, format = "%H:%M:%S")
+
+hpc_data_dates$Global_active_power <- as.character(hpc_data_dates$Global_active_power)
+
+hpc_data_dates$Global_active_power[hpc_data_dates$Global_active_power == "?"] <- NA 
+hpc_data_dates <- hpc_data_dates[complete.cases(hpc_data_dates$Global_active_power), ] 
+
+hpc_data_dates$Global_active_power <- as.numeric(hpc_data_dates$Global_active_power)
+
+
+plot1 <- hist(hpc_data_dates$Global_active_power, freq = TRUE,
+     col = "red", border = "black", main = "Global Active Power",
+     xlab = "Global Active Power (kilowatts)" ,  ylab = "Frequency")
+
+png("plot1.png", width= 480, height = 480, units = "px")
+##dev.copy(png,'plot1.png')
+##dev.off()
