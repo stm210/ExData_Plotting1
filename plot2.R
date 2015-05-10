@@ -18,5 +18,8 @@ hpc_data_dates <- hpc_data_dates[complete.cases(hpc_data_dates$Global_active_pow
 
 hpc_data_dates$Global_active_power <- as.numeric(hpc_data_dates$Global_active_power)
 
-plot2 <- with(hpc_data_dates, plot(date_time,Global_active_power, type = "l"))
 png("plot2.png", width= 480, height = 480, units = "px")
+with(hpc_data_dates, plot(date_time,Global_active_power, type = "l",
+                            ylab = "Global Active Power (kilowatts)", xlab = ""))
+
+dev.off()

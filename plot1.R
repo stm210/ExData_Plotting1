@@ -21,10 +21,8 @@ hpc_data_dates <- hpc_data_dates[complete.cases(hpc_data_dates$Global_active_pow
 hpc_data_dates$Global_active_power <- as.numeric(hpc_data_dates$Global_active_power)
 
 
-plot1 <- hist(hpc_data_dates$Global_active_power, freq = TRUE,
+png("plot1.png", width= 480, height = 480, units = "px")
+hist(hpc_data_dates$Global_active_power, freq = TRUE,
      col = "red", border = "black", main = "Global Active Power",
      xlab = "Global Active Power (kilowatts)" ,  ylab = "Frequency")
-
-png("plot1.png", width= 480, height = 480, units = "px")
-##dev.copy(png,'plot1.png')
-##dev.off()
+dev.off()
